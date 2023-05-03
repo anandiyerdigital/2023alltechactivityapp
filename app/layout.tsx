@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "Alltech Activity App",
-  description: "Add your activity data, track progress and achieve your goals together!",
+  description: "Add your activity data, track progress and achieve our company goals together!",
 };
 
 import SupabaseAuthProvider from "@/components/providers/supabase-auth-provider";
