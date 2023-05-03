@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/seperator";
-import { Github, Chrome, Mail } from "lucide-react";
+import { Github, Chrome, Mail, ArrowBigRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSupabase } from "@/components/providers/supabase-provider";
@@ -39,13 +39,11 @@ const LoginForm = () => {
       <div className="w-full max-w-lg">
         {/* Text */}
         <div>
-          <h1 className="text-4xl font-bold">Login</h1>
+          <h1 className="text-4xl font-bold">Login to the Alltech Actitvity App</h1>
           <p className="mt-2 text-neutral-600">
-            Welcome to the{" "}
-            <span className="font-semibold text-neutral-800">
-              Supabase & Next.js 13 Auth Starter.
-            </span>{" "}
-            Please login your account by email or the Github account.
+            Add your run/walk activity to the Alltech Activity App, track progress, and
+            compete with your colleagues.
+            Lets achieve our goals together!
           </p>
         </div>
         {/* Google Button */}
@@ -53,12 +51,12 @@ const LoginForm = () => {
           onClick={signInWithAzure}
           className="flex items-center w-full gap-2 mt-6"
         >
-          Login with Google <Chrome size="16" />
+          Login with your Alltech Account <ArrowBigRight size="16" />
         </Button>
         {/* Seperator */}
-        <div className="flex items-center my-8">
+        {/* <div className="flex items-center my-8">
           <Separator /> <span className="mx-6">OR</span> <Separator />
-        </div>
+        </div> */}
         {/* Form Container */}
 
       </div>
