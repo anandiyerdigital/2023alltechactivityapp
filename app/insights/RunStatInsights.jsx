@@ -58,7 +58,7 @@ const navigation = [
   { name: "Home", href: "/dashboard", icon: HomeIcon, current: false },
   // { name: 'Company Goal', href: '#', icon: ClockIcon, current: false },
   { name: "Run Insights", href: "/insights", icon: ScaleIcon, current: true },
-  { name: "Tips", href: "#", icon: CreditCardIcon, current: false },
+
   ,
 ];
 const secondaryNavigation = [
@@ -204,7 +204,7 @@ const RunStats = ({ currentUser, userStats }) => {
                   <div className="flex flex-shrink-0 items-center px-4">
                     <img
                       className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
+                      src="https://creative.alltech.com/m/1e74d8e74daed3ae/Digital_PNG-Alltech-logo-all-white.png"
                       alt="Easywire logo"
                     />
                   </div>
@@ -335,20 +335,12 @@ const RunStats = ({ currentUser, userStats }) => {
                     Search
                   </label>
                   <div className="relative w-full text-gray-400 focus-within:text-gray-600">
-                    <div
-                      className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
-                      aria-hidden="true"
-                    >
-                      <MagnifyingGlassIcon
-                        className="h-5 w-5"
-                        aria-hidden="true"
-                      />
-                    </div>
+                  
                     <input
                       id="search-field"
                       name="search-field"
                       className="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-                      placeholder="Search transactions"
+                      placeholder=""
                       type="search"
                     />
                   </div>
@@ -360,7 +352,7 @@ const RunStats = ({ currentUser, userStats }) => {
                   className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                 >
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
                 </button>
 
                 {/* Profile dropdown */}
@@ -483,7 +475,7 @@ const RunStats = ({ currentUser, userStats }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
+                  {/* <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
                     <button
                       type="button"
                       className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
@@ -496,7 +488,7 @@ const RunStats = ({ currentUser, userStats }) => {
                     >
                       View All Data
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

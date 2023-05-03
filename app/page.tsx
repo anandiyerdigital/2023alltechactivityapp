@@ -11,8 +11,8 @@ export default function Home() {
     <div>
       
       <Homepage />
-      <h1>Next.js + TypeScript + Tailwind CSS + Supabase</h1>
-      <GetPosts />
+      {/* <h1>Next.js + TypeScript + Tailwind CSS + Supabase</h1>
+      <GetPosts /> */}
     </div>
   )
 }

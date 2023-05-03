@@ -10,6 +10,7 @@ import SupabaseAuthProvider from "@/components/providers/supabase-auth-provider"
 import SupabaseProvider from "@/components/providers/supabase-provider";
 import { createClient } from "@/utils/supabase-server";
 import { Inter } from "next/font/google";
+import ToasterProvider from "@/components/providers/ToasterProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -29,6 +30,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SupabaseProvider>
           <SupabaseAuthProvider serverSession={session}>
+            <ToasterProvider />
             {children}
           </SupabaseAuthProvider>
         </SupabaseProvider>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import { FaClock, FaRunning, FaTrophy, FaWalking } from "react-icons/fa";
 import CompanyGoal from "./CompanyGoal";
@@ -43,6 +44,7 @@ import {
 
 import { Bar } from "react-chartjs-2";
 import { useAuth } from "@/components/providers/supabase-auth-provider";
+import { Link } from "lucide-react";
 
 ChartJS.register(
   CategoryScale,
@@ -57,7 +59,7 @@ const navigation = [
   { name: "Home", href: "/dashboard", icon: HomeIcon, current: true },
   // { name: 'Company Goal', href: '#', icon: ClockIcon, current: false },
   { name: "Run Insights", href: "/insights", icon: ScaleIcon, current: false },
-  { name: "Tips", href: "#", icon: CreditCardIcon, current: false },
+
   ,
 ];
 const secondaryNavigation = [
@@ -95,15 +97,28 @@ function classNames(...classes) {
 }
 
 const RunStats = ({ currentUser, userStats }) => {
+  const { push } = useRouter();
+
+  const handleAddRun = () => {
+    push("/dashboard#addstats")
+  }
+
+  const handleViewData = () => {
+    push("/dashboard#viewstats")
+  }
+
+
   const { user, signOut } = useAuth();
 //  console.log("user logged in", user);
   const runData = userStats;
   const totalMiles = runData.reduce((sum, run) => sum + run.miles, 0);
+
   const totalTimeInMinutes = runData.reduce(
     (sum, run) => sum + run.totalTime,
     0
   );
   const totalTimeInHours = totalTimeInMinutes / 60;
+  const averagePace = totalTimeInMinutes / totalMiles;
 
   const options = {
     responsive: true,
@@ -202,7 +217,7 @@ const RunStats = ({ currentUser, userStats }) => {
                   <div className="flex flex-shrink-0 items-center px-4">
                     <img
                       className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
+                      src="https://creative.alltech.com/m/1e74d8e74daed3ae/Digital_PNG-Alltech-logo-all-white.png"
                       alt="Easywire logo"
                     />
                   </div>
@@ -333,7 +348,7 @@ const RunStats = ({ currentUser, userStats }) => {
                     Search
                   </label>
                   <div className="relative w-full text-gray-400 focus-within:text-gray-600">
-                    <div
+                    {/* <div
                       className="pointer-events-none absolute inset-y-0 left-0 flex items-center"
                       aria-hidden="true"
                     >
@@ -341,12 +356,12 @@ const RunStats = ({ currentUser, userStats }) => {
                         className="h-5 w-5"
                         aria-hidden="true"
                       />
-                    </div>
+                    </div> */}
                     <input
                       id="search-field"
                       name="search-field"
                       className="block h-full w-full border-transparent py-2 pl-8 pr-3 text-gray-900 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
-                      placeholder="Search transactions"
+                      placeholder=""
                       type="search"
                     />
                   </div>
@@ -358,7 +373,7 @@ const RunStats = ({ currentUser, userStats }) => {
                   className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                 >
                   <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
+                  {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
                 </button>
 
                 {/* Profile dropdown */}
@@ -482,15 +497,21 @@ const RunStats = ({ currentUser, userStats }) => {
                     </div>
                   </div>
                   <div className="mt-6 flex space-x-3 md:ml-4 md:mt-0">
+                    
                     <button
                       type="button"
+                      onClick={handleAddRun}
                       className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                     >
+                  
                       Add Run Data
+                 
                     </button>
+                   
                     <button
                       type="button"
-                      className="inline-flex items-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
+                      onClick={handleViewData}
+                      className="inline-flex items-center rounded-md bg-amber-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
                     >
                       View All Data
                     </button>
@@ -610,7 +631,7 @@ const RunStats = ({ currentUser, userStats }) => {
                 </div>
               </div>
 
-              <Bar className="flex p-5 m-5" options={options} data={data} />
+              <Bar id="viewstats" className="flex p-5 m-5" options={options} data={data} />
 
               <h2 className="mx-auto mt-8 max-w-6xl px-4 text-lg font-medium leading-6 text-gray-900 sm:px-6 lg:px-8">
                 Recent Run/Walk Activity
@@ -626,7 +647,7 @@ const RunStats = ({ currentUser, userStats }) => {
                     <li key={runinfo.id}>
                       <span className="flex items-center space-x-4">
                         <span className="flex flex-1 space-x-2 truncate">
-                          <BanknotesIcon
+                          <FaRunning
                             className="h-5 w-5 flex-shrink-0 text-gray-400"
                             aria-hidden="true"
                           />
@@ -782,7 +803,9 @@ const RunStats = ({ currentUser, userStats }) => {
                   </div>
                 </div>
               </div>
+              <div id="addstats">
               <AddStats />
+              </div>
             </div>
           </main>
         </div>

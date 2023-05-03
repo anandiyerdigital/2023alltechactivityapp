@@ -23,7 +23,7 @@ const AddStats = () => {
 
     try {
       await axios.post("/api/rundata", data);
-      toast.success("Registered!");
+      toast.success("Your activity data has been added successfully!");
     } catch (error) {
       toast.error("Error");
     } finally {
@@ -100,7 +100,7 @@ const AddStats = () => {
       <button
         onClick={handleSubmit}
         type="submit"
-        className="bg-blue-500 text-white font-bold py-2 px-4 mt-4 rounded-md transition duration-150 ease-in-out hover:bg-blue-600"
+        className="bg-amber-700 text-white font-bold py-2 px-4 mt-4 rounded-md transition duration-150 ease-in-out hover:bg-blue-600"
       >
         Submit
       </button>

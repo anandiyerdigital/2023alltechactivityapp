@@ -5,7 +5,7 @@ export default async function getUserStats() {
   const supabase = createClient();
 
   const currentUser = await supabase.auth.getUser();
-  //console.log("currentUser", currentUser)
+  console.log("currentUser", currentUser)
 
   try {
     // const runs = await prisma.run.findMany({
@@ -18,6 +18,7 @@ export default async function getUserStats() {
 let { data: Run, error } = await supabase
 .from('Run')
 .select('*')
+.eq('userId', currentUser?.data?.user.id)
 
     
 
